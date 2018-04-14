@@ -20,6 +20,8 @@ with Letsencrypt but unfortunately they won't issue a certificate for a raw IP a
 
 If you don't want to pay for a "real" certificate I've included a script to build a self signed for the IP address you are going to run this on.
 
+`./mkCert.sh 192.168.1.1`
+
 You will be asked for a password 3 times, this will not be needed again but needs to match all 3 times.
 
 To run on the default port 443 and query the Google 8.8.8.8 DNS server then use the following:
