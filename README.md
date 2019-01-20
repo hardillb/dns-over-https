@@ -1,6 +1,6 @@
 # A Basic DNS-Over-HTTPS implementation
 
-Following the anouncement from Mozilla, Cloudflare and Google and starting a trial of DNS-Over-HTTPS I thought it might be usefull 
+Following the anouncement from Mozilla, Cloudflare and Google and starting a trial of DNS-Over-HTTPS I thought it might be useful 
 to look at how to implement my own server.
 
 At the moment there are 2 competing standards.
