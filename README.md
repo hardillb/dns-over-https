@@ -47,5 +47,5 @@ Once running point `https://<ip-address>/test` and accept the security exception
 
 ## TODO
 
-- Add HTTP/2 support
+- ~~Add HTTP/2 support~~
 - More testing

@@ -1,6 +1,7 @@
 
 const fs = require('fs');
-const https = require('https');
+//const https = require('https');
+const spdy = require('spdy');
 
 const express = require('express');
 const app = express();
@@ -157,7 +158,8 @@ var options = {
 	key: fs.readFileSync('server.key'),
 	cert: fs.readFileSync('server.crt')
 };
-server = https.createServer(options, app);
+//const server = https.createServer(options, app);
+const server = spdy.createServer(options, app);
 
 server.listen(port ,() => {
 	console.log('Example app listening on port %d, querying %s!', port, dnsServer);
