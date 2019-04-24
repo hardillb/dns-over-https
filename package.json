@@ -1,11 +1,12 @@
 {
   "name": "dns-over-https",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "https-to-dns-proxy.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "https": "node https-to-dns-proxy.js",
+    "dns": "node dns-to-https-proxy.js"
   },
   "keywords": [
     "dns",
@@ -18,6 +19,7 @@
     "dns-packet": "^4.2.0",
     "express": "^4.16.3",
     "morgan": "^1.9.0",
+    "request": "^2.88.0",
     "spdy": "^4.0.0"
   }
 }
