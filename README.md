@@ -40,14 +40,14 @@ Once running point `https://<ip-address>/test` and accept the security exception
 
 ### Configuring Firefox (version 60 or newer)
 
-- Enter `about:config` in the address bar
-- search for `network.trr`
-- change `network.trr.mode` to either 1, 2 or 3. 
-    1. Firefox pick the quickest
-    2. Firefox trys DNS-Over-HTTPS first and falls back to DNS
-    3. Firefox only uses DNS-Over-HTTPS
-- change `network.trr.uri` to `https://<ip-address>/query`
-- change `network.trr.bootstrapAddress` to `<ip-address>`
++ Enter `about:config` in the address bar
++ search for `network.trr`
++ change `network.trr.mode` to either 1, 2 or 3. 
+    - 1 Firefox pick the quickest
+    - 2 Firefox trys DNS-Over-HTTPS first and falls back to DNS
+    - 3 Firefox only uses DNS-Over-HTTPS
++ change `network.trr.uri` to `https://<ip-address>/query`
++ change `network.trr.bootstrapAddress` to `<ip-address>`
 
 ### DNS-to-HTTPS proxy
 
