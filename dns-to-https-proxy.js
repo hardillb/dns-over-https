@@ -11,32 +11,32 @@ const allow_selfSigned = (process.env["DNS_INSECURE"] == 1)
 const server = dgram.createSocket('udp6')
 
 server.on('listening', function(){
-	console.log("listening")
+  console.log("listening")
 })
 
 server.on('message', function(msg, remote){
   var packet = dnsPacket.decode(msg)
   var id = packet.id
   var options = {
-  	url: url,
-  	method: 'POST',
-  	body: msg,
-  	encoding: null,
+    url: url,
+    method: 'POST',
+    body: msg,
+    encoding: null,
     rejectUnauthorized: allow_selfSigned ? false : true,
-  	headers: {
-  		'Accept': 'application/dns-message',
-  		'Content-Type': 'application/dns-message'
-  	}
+    headers: {
+      'Accept': 'application/dns-message',
+      'Content-Type': 'application/dns-message'
+    }
   }
 
   request(options, function(err, resp, body){
-  	if (!err && resp.statusCode == 200) {
-  		var respPacket = dnsPacket.decode(body)
-  		respPacket.id = id
-  		server.send(body,remote.port)
-  	} else {
-  		console.log(err)
-  	}
+    if (!err && resp.statusCode == 200) {
+      var respPacket = dnsPacket.decode(body)
+      respPacket.id = id
+      server.send(body,remote.port)
+    } else {
+      console.log(err)
+    }
   })
 
 })
