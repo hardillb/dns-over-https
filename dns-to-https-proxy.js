@@ -5,10 +5,11 @@ const dnsPacket = require('dns-packet')
 const port = process.env["DNS_PORT"] || 53
 //https://cloudflare-dns.com/dns-query"
 const url = process.env["DNS_URL"] 
-    || "https://dns.google.com/experimental" 
+    || "https://dns.google/dns-query" 
 const allow_selfSigned = (process.env["DNS_INSECURE"] == 1) 
 
-const server = dgram.createSocket('udp6')
+//pinning to IPv4 as server was replying on IPv6 when request came in on IPv4
+const server = dgram.createSocket('udp4')
 
 server.on('listening', function(){
   console.log("listening")
@@ -33,7 +34,8 @@ server.on('message', function(msg, remote){
     if (!err && resp.statusCode == 200) {
       var respPacket = dnsPacket.decode(body)
       respPacket.id = id
-      server.send(body,remote.port)
+      // console.log(respPacket);
+      server.send(dnsPacket.encode(respPacket),remote.port)
     } else {
       console.log(err)
     }
