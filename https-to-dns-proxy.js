@@ -91,8 +91,8 @@ app.get("/resolve", (req,res) => {
       d = req.query.do;
     }
 
-    console.log(cd);
-    console.log(d);
+    console.log("cd",cd);
+    console.log("do",d);
 
     if (type === undefined) {
       type = 'A'
@@ -103,9 +103,13 @@ app.get("/resolve", (req,res) => {
     }
 
     var flags = packet.RECURSION_DESIRED | packet.AUTHENTIC_DATA;
-
+    
     if (cd) {
       flags = flags | packet.CHECKING_DISABLED;
+    }
+
+    if (d) {
+      flags = flags |  packet.DNSSEC_OK;
     }
 
     var query = {
@@ -118,11 +122,7 @@ app.get("/resolve", (req,res) => {
       }]
     };
 
-    if (d) {
-      flags = flags | packet.DNSSEC_OK;
-    }
-
-
+    
     var buf = packet.encode(query);
 
     var socket = dgram.createSocket('udp4');
