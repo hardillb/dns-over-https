@@ -1,12 +1,16 @@
 {
   "name": "dns-over-https",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "",
   "main": "https-to-dns-proxy.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "https": "node https-to-dns-proxy.js",
     "dns": "node dns-to-https-proxy.js"
+  },
+  "bin": {
+    "https-to-dns": "./https-to-dns-proxy.js",
+    "dns-to-https": "./dns-to-https-proxy.js"
   },
   "keywords": [
     "dns",

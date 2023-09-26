@@ -1,5 +1,5 @@
+#!/usr/bin/env node
 const dgram = require('dgram')
-const request = require('request')
 const got = require('got')
 const dnsPacket = require('dns-packet')
 
