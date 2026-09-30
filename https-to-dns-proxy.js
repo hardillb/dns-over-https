@@ -30,6 +30,17 @@ app.use(bodyParser.raw({
   type: 'application/dns-message'
 }));
 
+var apiKey = process.env['API_KEY'];
+
+function checkAuth(req, res, next) {
+  if (!apiKey || req.get('x-api-key') !== apiKey) {
+    return res.sendStatus(401);
+  }
+  next();
+}
+
+app.use(checkAuth);
+
 app.post('/dns-query', (req, res) => {
   if (req.headers["content-type"] == 'application/dns-message') {
 
